@@ -59,8 +59,8 @@ $app->get('/event/:code', function() use ($app) {
     $mysqli->close();
 });
 
-$app->run();
-
 $app->get('/confirm', function() use ($app){
     $app->render("confirmation.html");
 });
+
+$app->run();
