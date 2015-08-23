@@ -18,7 +18,7 @@ $app->get('/event/:code', function() use ($app) {
         $app->response->setStatus(500);
         return;
     }
-
+/*
     if (!($stmt = $mysqli->prepare('SELECT event_id FROM `events` WHERE CODE=? AND open<=CURDATE() AND close>=CURDATE()'))) {
         error_log("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
         $app->response->setStatus(500);
@@ -46,7 +46,9 @@ $app->get('/event/:code', function() use ($app) {
     $stmt->fetch();
 
     echo "EventID:".$eventID;
-    //$eventID = 1;
+    
+    */
+    $eventID = 1; //Hardcoded to 1 for now because I can'y get the above query to work
     $ip = $app->request->headers->get('x-forwarded-for');
     $stmt->close();
 
