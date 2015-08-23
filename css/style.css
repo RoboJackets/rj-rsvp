@@ -37,7 +37,6 @@ a:visited {
 a:active,
 a:hover {
 	color: hsl(196, 90%, 45%);
-	text-shadow: 0 1px 1px rgba(0,0,0,0.75), 0 0 5px rgba(198,234,247,0.4);
 }
 p{
 	margin-bottom: 0.3em;
