@@ -44,12 +44,12 @@ $app->get('/event/:code', function() use ($app) {
     }
 
     $stmt->fetch();
-    
+
     echo "EventID:".$eventID;
 
     $stmt->close();
 
-    $mysqli->query("INSERT INTO `rj-rsvp`.`clicks` (`click_id`, `event_id`, `ip_address`, `timestamp`) VALUES (NULL, '".$eventID."', INET_ATON(".$app->request->headers->get('x-forwarded-for');."), CURRENT_TIMESTAMP);");
+    $mysqli->query("INSERT INTO `rj-rsvp`.`clicks` (`click_id`, `event_id`, `ip_address`, `timestamp`) VALUES (NULL, '".$eventID."', INET_ATON(".$app->request->headers->get('x-forwarded-for')."), CURRENT_TIMESTAMP);");
 });
 
 $app->run();
