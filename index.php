@@ -49,7 +49,7 @@ $app->get('/event/:code', function() use ($app) {
 
     $stmt->close();
 
-    if(!$mysqli->query("INSERT INTO `rj-rsvp`.`clicks` (`click_id`, `event_id`, `ip_address`) VALUES (NULL, '".$eventID."', INET_ATON(".$app->request->headers->get('x-forwarded-for')."));")) {
+    if(!$mysqli->query("INSERT INTO `rj-rsvp`.`clicks` (`click_id`, `event_id`, `ip_address`) VALUES (NULL, ".$eventID.", INET_ATON(".$app->request->headers->get('x-forwarded-for')."));")) {
         error_log("Insert Query failed: (" . $mysqli->errno . ") " . $mysqli->error);
         $app->response->setStatus(500);
         return;
