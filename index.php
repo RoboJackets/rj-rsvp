@@ -43,7 +43,7 @@ $app->get('/event/:code', function() use ($app) {
         return;
     }
 
-
+    $stmt->fetch();
     echo "EventID:".$eventID;
 
     $stmt->close();
