@@ -60,6 +60,8 @@ $app->get('/event/:code', function() use ($app) {
     }
     
     $mysqli->close();
+    
+    $app->redirect("/confirm", 303);
 });
 
 $app->get('/confirm', function() use ($app){
