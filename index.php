@@ -19,7 +19,7 @@ $app->get('/event/:code', function() use ($app) {
         return;
     }
 
-    if (!($stmt = $mysqli->prepare('SELECT event_id FROM `events` WHERE CODE=? AND open<=CURDATE() AND close>=CURDATE()))'))) {
+    if (!($stmt = $mysqli->prepare('SELECT event_id FROM `events` WHERE CODE=? AND open<=CURDATE() AND close>=CURDATE()'))) {
         error_log("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
         $app->request->setStatus(500);
         return;
