@@ -50,10 +50,12 @@ $app->get('/event/:code', function() use ($app) {
     $stmt->close();
 
     if(!$mysqli->query("INSERT INTO `rj-rsvp`.`clicks` (`click_id`, `event_id`, `ip_address`, `timestamp`) VALUES (NULL, '".$eventID."', INET_ATON(".$app->request->headers->get('x-forwarded-for')."), CURRENT_TIMESTAMP);")) {
-        error_log("Insert Query failed: (" . $stmt->errno . ") " . $stmt->error);
+        error_log("Insert Query failed: (" . $mysqli->errno . ") " . $mysqli->error);
         $app->response->setStatus(500);
         return;
     }
+    
+    $mysqli->close();
 });
 
 $app->run();
