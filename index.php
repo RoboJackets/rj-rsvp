@@ -24,7 +24,7 @@ $app->get('/event/:code', function() use ($app) {
         $app->request->setStatus(500);
         return;
     }
-    
+
     if (!$stmt->bind_param("s", $code)) {
         error_log("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
         $app->request->setStatus(500);
@@ -36,17 +36,18 @@ $app->get('/event/:code', function() use ($app) {
         $app->request->setStatus(500);
         return;
     }
-    
-    if (!($res = $stmt->get_result())) {
-        error_log("Getting result set failed: (" . $stmt->errno . ") " . $stmt->error);
+
+    if(!$stmt->bind_result($eventID)){
+        error_log("Bind Result failed: (" . $stmt->errno . ") " . $stmt->error);
         $app->request->setStatus(500);
         return;
     }
-    
-    var_dump($res->fetch_all());
-    
+
+
+    var_dump($eventID);
+
     $stmt->close();
-    
+
     //Query if event exists & is between open and close date
     //If yes, add click to database
 });
