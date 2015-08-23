@@ -46,7 +46,7 @@ $app->get('/event/:code', function() use ($app) {
     $stmt->fetch();
 
     echo "EventID:".$eventID;
-    $eventID = 1;
+    //$eventID = 1;
     $ip = $app->request->headers->get('x-forwarded-for');
     $stmt->close();
 
