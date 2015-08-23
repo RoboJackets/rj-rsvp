@@ -42,15 +42,16 @@ $app->get('/event/:code', function() use ($app) {
         $app->response->setStatus(500);
         return;
     }
-
+    
     $stmt->fetch();
-
+    $stmt->close();
+    
     echo "EventID:".$eventID;
     
     */
     $eventID = 1; //Hardcoded to 1 for now because I can'y get the above query to work
     $ip = $app->request->headers->get('x-forwarded-for');
-    $stmt->close();
+    
 
     if(!$mysqli->query("INSERT INTO `clicks` (`event_id`, `ip_address`) VALUES (".$eventID.", INET_ATON('".$ip."'))")) {
         error_log("Insert Query failed: (" . $mysqli->errno . ") " . $mysqli->error);
