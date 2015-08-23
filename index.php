@@ -50,7 +50,7 @@ $app->get('/event/:code', function() use ($app) {
     echo $app->request->headers->get('x-forwarded-for');
     $stmt->close();
 
-    if(!$mysqli->query("INSERT INTO `clicks` (`event_id`, `ip_address`) VALUES (".$eventID.", INET_ATON(192.168.1.10));")) {
+    if(!$mysqli->query("INSERT INTO `clicks` (`event_id`, `ip_address`) VALUES (".$eventID.", INET_ATON(192.168.1.10))")) {
         error_log("Insert Query failed: (" . $mysqli->errno . ") " . $mysqli->error);
         $app->response->setStatus(500);
         return;
