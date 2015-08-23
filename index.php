@@ -1,6 +1,7 @@
 <?php
 
 require 'Slim/Slim.php';
+require 'config.php';
 
 \Slim\Slim::registerAutoloader();
 
