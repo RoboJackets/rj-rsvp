@@ -53,3 +53,7 @@ $app->get('/event/:code', function() use ($app) {
 });
 
 $app->run();
+
+$app->get('/confirm', function() use ($app){
+    $app->render(confirmation.html);
+});
