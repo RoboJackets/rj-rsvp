@@ -50,6 +50,8 @@ $app->get('/event/:code', function() use ($app) {
     
     */
     //workaround for query
+    var_dump($code);
+    
     switch ($code) {
         case "gi2015":
             $eventID = 1;
