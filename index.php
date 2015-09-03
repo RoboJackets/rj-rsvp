@@ -49,7 +49,20 @@ $app->get('/event/:code', function() use ($app) {
     echo "EventID:".$eventID;
     
     */
-    $eventID = 1; //Hardcoded to 1 for now because I can'y get the above query to work
+    //workaround for query
+    switch ($code) {
+        case "gi2015":
+            $eventID = 1;
+            break;
+        case "gi2015a":
+            $eventID = 2;
+            break;
+        case "gi2015b":
+            $eventID = 3;
+            break;
+    }
+    
+    
     $ip = $app->request->headers->get('x-forwarded-for');
     
 
@@ -61,7 +74,7 @@ $app->get('/event/:code', function() use ($app) {
     
     $mysqli->close();
     
-    $app->render("confirmation.html");
+    $app->render($code.".html");
 });
 
 $app->run();
