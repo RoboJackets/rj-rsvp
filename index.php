@@ -11,7 +11,7 @@ $app->get('/', function(){
     echo "<html><body><h1>We're counting...</h1></body></html>";
 });
 
-$app->get('/event/:code', function() use ($app) {
+$app->get('/event/:code', function($code) use ($app) {
     $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
     if ($mysqli->connect_errno) {
         error_log("Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
@@ -50,7 +50,6 @@ $app->get('/event/:code', function() use ($app) {
     
     */
     //workaround for query
-    var_dump($code);
     
     switch ($code) {
         case "gi2015":
